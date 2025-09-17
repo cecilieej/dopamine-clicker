@@ -1,9 +1,46 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+import React from "react";
 import './App.css'
+import ClickerButton from "./components/ClickerButton";
+import Counter from "./components/Counter";
+import UpgradeList from "./components/UpgradeList";
+//import ChaosEffects from "./components/ChaosEffects";
+import EndGameScreen from "./components/EndGameScreen";
 
-function App() {
+import useGameLogic from "./hooks/useGameLogic";
+
+export default function App() {
+  const {
+    dopamine,
+    addDopamine,
+    upgrades,
+    purchaseUpgrade,
+    //chaosLevel,
+    endGame,
+  } = useGameLogic();
+
+  if (endGame) {
+    return <EndGameScreen />;
+  }
+
+
+  return (
+    <div className="game-container">
+      <Counter dopamine={dopamine} />
+      <ClickerButton onClick={addDopamine} />
+      <UpgradeList
+        dopamine={dopamine}
+        upgrades={upgrades}
+        onPurchase={purchaseUpgrade}
+      />
+      {/*<ChaosEffects chaosLevel={chaosLevel} />*/}
+    </div>
+  );
+}
+
+/*function App() {
   const [count, setCount] = useState(0)
 
   return (
@@ -32,4 +69,4 @@ function App() {
   )
 }
 
-export default App
+export default App*/
