@@ -1,7 +1,7 @@
 function ClickerButton({ onClick }) {
   return (
     <button className="clicker-btn" onClick={onClick}>
-      Click for Dopamine
+      Click Me
     </button>
   );
 }

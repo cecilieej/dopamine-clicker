@@ -25,7 +25,8 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  justify-content: center;
+  align-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -52,6 +53,44 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  gap: 2rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+.counter {
+  font-size: 2em;
+  font-weight: 300;  /* lighter weight */
+  color: #b3b3b3;    /* lighter color */
+  margin: 0;
+  order: 2;          /* places counter after button */
+  text-align: center;
+  width: 100%;
+}
+
+.clicker-btn {
+  font-size: 1.2em;
+  padding: 1em 2em;
+  order: 1;          /* places button before counter */
+  margin: 0 auto;
+}
+
+.upgrade-list {
+  order: 3;          /* places upgrades at the bottom */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
 }
 
 @media (prefers-color-scheme: light) {

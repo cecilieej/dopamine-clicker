@@ -2,7 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import React from "react";
-import './App.css'
+import './index.css'
 import ClickerButton from "./components/ClickerButton";
 import Counter from "./components/Counter";
 import UpgradeList from "./components/UpgradeList";
@@ -12,6 +12,7 @@ import EndGameScreen from "./components/EndGameScreen";
 import useGameLogic from "./hooks/useGameLogic";
 
 export default function App() {
+  const [started, setStarted] = useState(false);
   const {
     dopamine,
     addDopamine,
@@ -21,20 +22,28 @@ export default function App() {
     endGame,
   } = useGameLogic();
 
+  const handleClick = () => {
+    if (!started) {
+      setStarted(true);
+    }
+    addDopamine();
+  };
+
   if (endGame) {
     return <EndGameScreen />;
   }
 
-
   return (
     <div className="game-container">
-      <Counter dopamine={dopamine} />
-      <ClickerButton onClick={addDopamine} />
-      <UpgradeList
-        dopamine={dopamine}
-        upgrades={upgrades}
-        onPurchase={purchaseUpgrade}
-      />
+      <ClickerButton onClick={handleClick} />
+      {started && <Counter dopamine={dopamine} />}
+      {started && (
+        <UpgradeList
+          dopamine={dopamine}
+          upgrades={upgrades}
+          onPurchase={purchaseUpgrade}
+        />
+      )}
       {/*<ChaosEffects chaosLevel={chaosLevel} />*/}
     </div>
   );
