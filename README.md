@@ -1,2 +1,2 @@
 # dopamine-clicker
-A dopamine clicker game. Made with C# and React.
+A dopamine-themed clicker game. Made with React and Vite.
