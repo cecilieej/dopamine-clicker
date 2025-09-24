@@ -1,20 +1,537 @@
-// array of upgrade objects {id, name, cost, dps, unlockAt, chaosBoost}
+// Structure: {id, name, type, cost, dps, unlockAt, flavorText, maxOwned, chaosBoost}
 
 export const upgradesData = [
-  { id: 1, name: "DPS 0.1", cost: 3, dps: 0.1, unlockAt: 2, chaosBoost: 1 }, // TikTok Scroll
-  { id: 2, name: "DPS 0.5", cost: 5, dps: 0.5, unlockAt: 5, chaosBoost: 1 }, // Instagram Reels
-  { id: 3, name: "DPS 1", cost: 10, dps: 1, unlockAt: 10, chaosBoost: 2 }, // Podcasts
-  { id: 4, name: "DPS 1.5", cost: 25, dps: 1.5, unlockAt: 25, chaosBoost: 3 }, // Mukbang Stream
-  { id: 5, name: "DPS 3", cost: 40, dps: 3, unlockAt: 50, chaosBoost: 5 }, // Gacha Pulls
-  { id: 6, name: "DPS 5", cost: 100, dps: 5, unlockAt: 80, chaosBoost: 8 }, // Discord Calls
-  { id: 7, name: "DPS 10", cost: 100, dps: 10, unlockAt: 100, chaosBoost: 12 }, // Notifications
-  { id: 8, name: "DPS 50", cost: 200, dps: 50, unlockAt: 125, chaosBoost: 20 }, // Memes
-  { id: 9, name: "DPS 85", cost: 250, dps: 85, unlockAt: 150, chaosBoost: 30 }, // Viral Videos
-  { id: 10, name: "DPS 100", cost: 500, dps: 100, unlockAt: 200, chaosBoost: 50 }, // Online Shopping
-  { id: 11, name: "DPS 150", cost: 1000, dps: 150, unlockAt: 300, chaosBoost: 75 }, // Binge Watching
-  { id: 12, name: "DPS 200", cost: 2000, dps: 200, unlockAt: 400, chaosBoost: 100 }, // Social Media Addiction
-  { id: 13, name: "DPS 300", cost: 5000, dps: 300, unlockAt: 500, chaosBoost: 150 }, // Influencer Lifestyle
-  { id: 14, name: "DPS 400", cost: 10000, dps: 400, unlockAt: 600, chaosBoost: 200 }, // Viral Sensation
-  { id: 15, name: "DPS 500", cost: 20000, dps: 500, unlockAt: 700, chaosBoost: 300 }, // Internet Celebrity
-  { id: 99, name: "Log Off", cost: 1000000, dps: 0, unlockAt: 1000000, chaosBoost: 0 },
+  // Generator Upgrade (only this one is repeatable)
+  { 
+    id: 1, 
+    name: "Bouncing DVD", 
+    type: "generator", 
+    cost: 5, 
+    dps: 0.1, 
+    unlockAt: 2, 
+    flavorText: "Adds bouncing DVD logos; gives extra bounce stimulation", 
+    maxOwned: null, 
+    chaosBoost: 1 
+  },
+
+  // Visual/Permanent Upgrades (maxOwned: 1)
+  { 
+    id: 2, 
+    name: "Add Tab Title", 
+    type: "visual", 
+    cost: 5, 
+    dps: 0, 
+    unlockAt: 5, 
+    flavorText: "Adds a title + icon to the browser tab (mostly cosmetic)", 
+    maxOwned: 1, 
+    chaosBoost: 1 
+  },
+  { 
+    id: 3, 
+    name: "Amount Animation", 
+    type: "visual", 
+    cost: 10, 
+    dps: 0, 
+    unlockAt: 8, 
+    flavorText: "Plays an animation when clicking; gives +1 stimulation per click bonus", 
+    maxOwned: 1, 
+    chaosBoost: 2 
+  },
+  { 
+    id: 4, 
+    name: "SPS Counter", 
+    type: "visual", 
+    cost: 25, 
+    dps: 0, 
+    unlockAt: 15, 
+    flavorText: "Shows a 'stimulation per second' counter (informational UI)", 
+    maxOwned: 1, 
+    chaosBoost: 1 
+  },
+  { 
+    id: 5, 
+    name: "Button Upgrade", 
+    type: "visual", 
+    cost: 40, 
+    dps: 0, 
+    unlockAt: 25, 
+    flavorText: "Upgrades the appearance & sound of the button; gives +1 spc", 
+    maxOwned: 1, 
+    chaosBoost: 2 
+  },
+  { 
+    id: 6, 
+    name: "DVD Bounce Sound", 
+    type: "visual", 
+    cost: 75, 
+    dps: 0, 
+    unlockAt: 40, 
+    flavorText: "Makes bouncing DVDs produce sound; gives extra bounce stimulation", 
+    maxOwned: 1, 
+    chaosBoost: 3 
+  },
+  { 
+    id: 7, 
+    name: "Subway Surfers", 
+    type: "visual", 
+    cost: 100, 
+    dps: 3, 
+    unlockAt: 60, 
+    flavorText: "Embeds Subway Surfers visuals; gives +3 stimulation per second", 
+    maxOwned: 1, 
+    chaosBoost: 5 
+  },
+  { 
+    id: 8, 
+    name: "Breaking News", 
+    type: "visual", 
+    cost: 100, 
+    dps: 4, 
+    unlockAt: 70, 
+    flavorText: "Adds a news ticker/banner; gives +4 sps", 
+    maxOwned: 1, 
+    chaosBoost: 4 
+  },
+  { 
+    id: 9, 
+    name: "Critical Hits", 
+    type: "visual", 
+    cost: 200, 
+    dps: 0, 
+    unlockAt: 120, 
+    flavorText: "Adds a chance for 'critical' clicks (5% chance) which give extra stimulation", 
+    maxOwned: 1, 
+    chaosBoost: 3 
+  },
+  { 
+    id: 10, 
+    name: "Lofi Beats", 
+    type: "visual", 
+    cost: 250, 
+    dps: 10, 
+    unlockAt: 150, 
+    flavorText: "Adds lofi music + visuals (Lofi Girl); gives +10 sps", 
+    maxOwned: 1, 
+    chaosBoost: 6 
+  },
+  { 
+    id: 11, 
+    name: "Rain Sounds", 
+    type: "visual", 
+    cost: 300, 
+    dps: 15, 
+    unlockAt: 200, 
+    flavorText: "Adds rain sound + visuals; gives +15 sps", 
+    maxOwned: 1, 
+    chaosBoost: 5 
+  },
+  { 
+    id: 12, 
+    name: "Pinwheel", 
+    type: "visual", 
+    cost: 700, 
+    dps: 20, 
+    unlockAt: 400, 
+    flavorText: "Adds a pinwheel effect on the button; gives +20 sps", 
+    maxOwned: 1, 
+    chaosBoost: 7 
+  },
+  { 
+    id: 13, 
+    name: "Hydraulic Press", 
+    type: "visual", 
+    cost: 1000, 
+    dps: 0, 
+    unlockAt: 600, 
+    flavorText: "Adds a hydraulic press mechanics; gives large stimulation on press", 
+    maxOwned: 1, 
+    chaosBoost: 8 
+  },
+  { 
+    id: 14, 
+    name: "Achievements", 
+    type: "visual", 
+    cost: 1500, 
+    dps: 0, 
+    unlockAt: 800, 
+    flavorText: "Unlocks the achievements UI and tracking system", 
+    maxOwned: 1, 
+    chaosBoost: 4 
+  },
+  { 
+    id: 15, 
+    name: "Thunder Sounds", 
+    type: "visual", 
+    cost: 2000, 
+    dps: 8, 
+    unlockAt: 1000, 
+    flavorText: "Adds ambient thunder sound; gives +8 sps", 
+    maxOwned: 1, 
+    chaosBoost: 6 
+  },
+  { 
+    id: 16, 
+    name: "Popcorn Animation", 
+    type: "visual", 
+    cost: 3500, 
+    dps: 0, 
+    unlockAt: 1500, 
+    flavorText: "Adds popcorn animation effect on clicks; gives +8 spc", 
+    maxOwned: 1, 
+    chaosBoost: 5 
+  },
+  { 
+    id: 17, 
+    name: "Slime", 
+    type: "visual", 
+    cost: 4000, 
+    dps: 35, 
+    unlockAt: 1800, 
+    flavorText: "Adds ASMR slime visuals/videos; gives +35 sps", 
+    maxOwned: 1, 
+    chaosBoost: 9 
+  },
+  { 
+    id: 18, 
+    name: "Technicolor", 
+    type: "visual", 
+    cost: 5000, 
+    dps: 0, 
+    unlockAt: 2200, 
+    flavorText: "DVDs change color when bouncing; gives +10 spb", 
+    maxOwned: 1, 
+    chaosBoost: 3 
+  },
+  { 
+    id: 19, 
+    name: "Mukbang", 
+    type: "visual", 
+    cost: 6000, 
+    dps: 60, 
+    unlockAt: 2500, 
+    flavorText: "Adds a mukbang video; gives +60 sps", 
+    maxOwned: 1, 
+    chaosBoost: 12 
+  },
+  { 
+    id: 20, 
+    name: "Screen Time", 
+    type: "visual", 
+    cost: 7500, 
+    dps: 0, 
+    unlockAt: 3000, 
+    flavorText: "Unlocks the 'Screen Time' menu (for tracking stats)", 
+    maxOwned: 1, 
+    chaosBoost: 2 
+  },
+  { 
+    id: 21, 
+    name: "Levels", 
+    type: "visual", 
+    cost: 8000, 
+    dps: 0, 
+    unlockAt: 3500, 
+    flavorText: "Enables leveling / experience mechanics, which yield bonus stimulation when leveling up", 
+    maxOwned: 1, 
+    chaosBoost: 6 
+  },
+  { 
+    id: 22, 
+    name: "True Crime Podcast", 
+    type: "visual", 
+    cost: 10000, 
+    dps: 100, 
+    unlockAt: 4000, 
+    flavorText: "Adds a true crime podcast audio/visual feed; gives +100 sps", 
+    maxOwned: 1, 
+    chaosBoost: 15 
+  },
+  { 
+    id: 23, 
+    name: "Auto Hydraulics", 
+    type: "visual", 
+    cost: 15000, 
+    dps: 0, 
+    unlockAt: 6000, 
+    flavorText: "Automates the hydraulic press (no manual clicking needed)", 
+    maxOwned: 1, 
+    chaosBoost: 8 
+  },
+  { 
+    id: 24, 
+    name: "Corner Hits", 
+    type: "visual", 
+    cost: 15000, 
+    dps: 0, 
+    unlockAt: 6500, 
+    flavorText: "Makes DVD logos hitting corners give extra stimulation (×10)", 
+    maxOwned: 1, 
+    chaosBoost: 10 
+  },
+  { 
+    id: 25, 
+    name: "UI Upgrade", 
+    type: "visual", 
+    cost: 15000, 
+    dps: 0, 
+    unlockAt: 7000, 
+    flavorText: "Adds more UI customization (colors, gradients) (mostly cosmetic)", 
+    maxOwned: 1, 
+    chaosBoost: 3 
+  },
+  { 
+    id: 26, 
+    name: "Item Shop", 
+    type: "visual", 
+    cost: 17500, 
+    dps: 0, 
+    unlockAt: 8000, 
+    flavorText: "Unlocks the cosmetic shop (cursors, trails, etc.)", 
+    maxOwned: 1, 
+    chaosBoost: 4 
+  },
+  { 
+    id: 27, 
+    name: "Loot Boxes", 
+    type: "visual", 
+    cost: 20000, 
+    dps: 0, 
+    unlockAt: 10000, 
+    flavorText: "Adds loot boxes that spawn; opening them gives stimulation or rewards", 
+    maxOwned: 1, 
+    chaosBoost: 12 
+  },
+  { 
+    id: 28, 
+    name: "Button Upgrade II", 
+    type: "visual", 
+    cost: 25000, 
+    dps: 0, 
+    unlockAt: 12000, 
+    flavorText: "Further upgrade: each click gives you 1% of your SPS as bonus stimulation", 
+    maxOwned: 1, 
+    chaosBoost: 5 
+  },
+  { 
+    id: 29, 
+    name: "Stock Market", 
+    type: "visual", 
+    cost: 25000, 
+    dps: 0, 
+    unlockAt: 13000, 
+    flavorText: "Unlocks a stock market minigame / mechanism", 
+    maxOwned: 1, 
+    chaosBoost: 8 
+  },
+  { 
+    id: 30, 
+    name: "Duolingo", 
+    type: "visual", 
+    cost: 25000, 
+    dps: 0, 
+    unlockAt: 14000, 
+    flavorText: "Adds Duolingo quiz widget; correct answers yield stimulation rewards", 
+    maxOwned: 1, 
+    chaosBoost: 6 
+  },
+  { 
+    id: 31, 
+    name: "Meditation", 
+    type: "visual", 
+    cost: 35000, 
+    dps: 120, 
+    unlockAt: 18000, 
+    flavorText: "Adds meditation visuals/audio; gives +120 sps", 
+    maxOwned: 1, 
+    chaosBoost: 10 
+  },
+  { 
+    id: 32, 
+    name: "Meditation ×2", 
+    type: "visual", 
+    cost: 60000, 
+    dps: 120, 
+    unlockAt: 30000, 
+    flavorText: "Doubles meditation yield / speeds it up", 
+    maxOwned: 1, 
+    chaosBoost: 8 
+  },
+  { 
+    id: 33, 
+    name: "Subway Surfers Unmuted", 
+    type: "visual", 
+    cost: 50000, 
+    dps: 150, 
+    unlockAt: 25000, 
+    flavorText: "Unmutes the Subway Surfers visuals (adds audio) + gives +150 sps", 
+    maxOwned: 1, 
+    chaosBoost: 12 
+  },
+  { 
+    id: 34, 
+    name: "Email", 
+    type: "visual", 
+    cost: 60000, 
+    dps: 0, 
+    unlockAt: 35000, 
+    flavorText: "Unlocks an 'Inbox' / email system (cosmetic / UI)", 
+    maxOwned: 1, 
+    chaosBoost: 4 
+  },
+  { 
+    id: 35, 
+    name: "Fitness Instructor", 
+    type: "visual", 
+    cost: 75000, 
+    dps: 100, 
+    unlockAt: 40000, 
+    flavorText: "Adds fitness/trainer visuals/audio; gives +100 sps", 
+    maxOwned: 1, 
+    chaosBoost: 8 
+  },
+  { 
+    id: 36, 
+    name: "In-Game Currency (Gems)", 
+    type: "visual", 
+    cost: 100000, 
+    dps: 0, 
+    unlockAt: 50000, 
+    flavorText: "Unlocks a 'Gems' currency for special cosmetics (not directly stimulative)", 
+    maxOwned: 1, 
+    chaosBoost: 5 
+  },
+  { 
+    id: 37, 
+    name: "Reaction Streamer", 
+    type: "visual", 
+    cost: 100000, 
+    dps: 200, 
+    unlockAt: 55000, 
+    flavorText: "Adds a streamer visual/audio feed; gives +200 sps", 
+    maxOwned: 1, 
+    chaosBoost: 15 
+  },
+  { 
+    id: 38, 
+    name: "Crypto", 
+    type: "visual", 
+    cost: 125000, 
+    dps: 0, 
+    unlockAt: 65000, 
+    flavorText: "Adds cryptocurrency to the stock market mechanism (no direct immediate stim bonus)", 
+    maxOwned: 1, 
+    chaosBoost: 10 
+  },
+  { 
+    id: 39, 
+    name: "Powerups", 
+    type: "visual", 
+    cost: 150000, 
+    dps: 0, 
+    unlockAt: 75000, 
+    flavorText: "Adds powerups (e.g. Critical Mode, Double DVD speed, +1 gem, etc.)", 
+    maxOwned: 1, 
+    chaosBoost: 12 
+  },
+  { 
+    id: 40, 
+    name: "Skywriter", 
+    type: "visual", 
+    cost: 180000, 
+    dps: 700, 
+    unlockAt: 90000, 
+    flavorText: "A plane flies across with a banner; gives +700 sps", 
+    maxOwned: 1, 
+    chaosBoost: 20 
+  },
+  { 
+    id: 41, 
+    name: "Voice Narrator", 
+    type: "visual", 
+    cost: 200000, 
+    dps: 0, 
+    unlockAt: 100000, 
+    flavorText: "Adds spoken narration (e.g. 'Critical Hit!', 'Corner Hit!', etc.)", 
+    maxOwned: 1, 
+    chaosBoost: 8 
+  },
+  { 
+    id: 42, 
+    name: "Subway Surfers Fullscreen", 
+    type: "visual", 
+    cost: 250000, 
+    dps: 500, 
+    unlockAt: 125000, 
+    flavorText: "Expands Subway Surfers to full screen; gives +500 sps", 
+    maxOwned: 1, 
+    chaosBoost: 18 
+  },
+  { 
+    id: 43, 
+    name: "Leverage", 
+    type: "visual", 
+    cost: 250000, 
+    dps: 0, 
+    unlockAt: 130000, 
+    flavorText: "Doubles stock market gains & losses (increases risk/reward)", 
+    maxOwned: 1, 
+    chaosBoost: 10 
+  },
+  { 
+    id: 44, 
+    name: "Tamagotchi", 
+    type: "visual", 
+    cost: 300000, 
+    dps: 0, 
+    unlockAt: 150000, 
+    flavorText: "Adds a virtual pet (you can interact/feed it) (cosmetic / fun)", 
+    maxOwned: 1, 
+    chaosBoost: 6 
+  },
+  { 
+    id: 45, 
+    name: "Twitch Chat", 
+    type: "visual", 
+    cost: 500000, 
+    dps: 0, 
+    unlockAt: 250000, 
+    flavorText: "Adds a Twitch chat overlay / feature (cosmetic / social simulation)", 
+    maxOwned: 1, 
+    chaosBoost: 12 
+  },
+  { 
+    id: 46, 
+    name: "DVD Speed II", 
+    type: "visual", 
+    cost: 750000, 
+    dps: 0, 
+    unlockAt: 400000, 
+    flavorText: "Doubles the DVD bounce speed (so more frequent bounces)", 
+    maxOwned: 1, 
+    chaosBoost: 15 
+  },
+  { 
+    id: 47, 
+    name: "Subway Surfers Wormhole", 
+    type: "visual", 
+    cost: 1000000, 
+    dps: 1000, 
+    unlockAt: 500000, 
+    flavorText: "Unlocks a wormhole mechanic in Subway Surfers; gives big stim boost", 
+    maxOwned: 1, 
+    chaosBoost: 25 
+  },
+  
+  // Final upgrade (keeping Touch Grass instead of Go to the Ocean)
+  { 
+    id: 99, 
+    name: "Touch Grass", 
+    type: "visual", 
+    cost: 2000000, 
+    dps: 0, 
+    unlockAt: 1000000, 
+    flavorText: "The ultimate dopamine detox. Escape the simulation.", 
+    maxOwned: 1, 
+    chaosBoost: 0 
+  },
 ];

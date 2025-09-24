@@ -35,15 +35,18 @@ export default function App() {
 
   return (
     <div className="game-container">
-      <ClickerButton onClick={handleClick} />
-      {started && <Counter dopamine={dopamine} />}
-      {started && (
-        <UpgradeList
-          dopamine={dopamine}
-          upgrades={upgrades}
-          onPurchase={purchaseUpgrade}
-        />
-      )}
+      <div className="clicker-section">
+        <ClickerButton onClick={handleClick} />
+      </div>
+      
+      <Counter dopamine={dopamine} />
+      
+      <UpgradeList
+        dopamine={dopamine}
+        upgrades={upgrades}
+        onPurchase={purchaseUpgrade}
+      />
+      
       {/*<ChaosEffects chaosLevel={chaosLevel} />*/}
     </div>
   );
