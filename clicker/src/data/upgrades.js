@@ -522,7 +522,7 @@ export const upgradesData = [
     chaosBoost: 25 
   },
   
-  // Final upgrade (keeping Touch Grass instead of Go to the Ocean)
+  // The FINAL(!) upgrade
   { 
     id: 99, 
     name: "Touch Grass", 

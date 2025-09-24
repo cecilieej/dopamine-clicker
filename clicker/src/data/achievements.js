@@ -1,188 +1,321 @@
-// Achievement system for dopamine clicker
-// Structure: {id, name, description, requirement, type, unlocked, claimed}
+// Achievement system -- TODO: Refine all achievements and their requirements
+// Structure: {id, name, description, requirement, unlocked, claimed, reward}
 
 export const achievementsData = [
-  // Click-based achievements
   {
     id: 1,
-    name: "First Hit",
-    description: "Click for the first time",
-    requirement: { type: "totalClicks", value: 1 },
-    unlocked: false,
-    claimed: false,
-    reward: 5
-  },
-  {
-    id: 2,
-    name: "Getting Started", 
-    description: "Click 10 times",
-    requirement: { type: "totalClicks", value: 10 },
-    unlocked: false,
-    claimed: false,
-    reward: 10
-  },
-  {
-    id: 3,
-    name: "Clicking Addict",
-    description: "Click 100 times", 
-    requirement: { type: "totalClicks", value: 100 },
-    unlocked: false,
-    claimed: false,
-    reward: 25
-  },
-  {
-    id: 4,
-    name: "Compulsive Clicker",
-    description: "Click 1,000 times",
-    requirement: { type: "totalClicks", value: 1000 },
-    unlocked: false,
-    claimed: false,
-    reward: 100
-  },
-
-  // Dopamine-based achievements  
-  {
-    id: 10,
-    name: "First Taste",
-    description: "Reach 10 total dopamine",
-    requirement: { type: "totalDopamine", value: 10 },
-    unlocked: false,
-    claimed: false,
-    reward: 15
-  },
-  {
-    id: 11,
-    name: "Dopamine Hundred",
-    description: "Reach 100 total dopamine",
-    requirement: { type: "totalDopamine", value: 100 },
-    unlocked: false,
-    claimed: false,
-    reward: 50
-  },
-  {
-    id: 12,
-    name: "Thousand High",
-    description: "Reach 1,000 total dopamine", 
-    requirement: { type: "totalDopamine", value: 1000 },
-    unlocked: false,
-    claimed: false,
-    reward: 200
-  },
-  {
-    id: 13,
-    name: "Dopamine Millionaire",
-    description: "Reach 1,000,000 total dopamine",
-    requirement: { type: "totalDopamine", value: 1000000 },
+    name: "Completionist",
+    description: "Unlock all other achievements",
+    requirement: { type: "allAchievements", value: "all" },
     unlocked: false,
     claimed: false,
     reward: 10000
   },
-
-  // DPS-based achievements
   {
-    id: 20,
-    name: "Passive Income", 
-    description: "Reach 1 dopamine per second",
-    requirement: { type: "currentDPS", value: 1 },
+    id: 2,
+    name: "Tunnel Vision",
+    description: "Unlock the wormhole (buy the Subway Surfers Wormhole upgrade)",
+    requirement: { type: "specificUpgrade", value: 47 },
     unlocked: false,
     claimed: false,
-    reward: 25
+    reward: 2500
   },
   {
-    id: 21,
-    name: "Automation Station",
-    description: "Reach 10 dopamine per second",
-    requirement: { type: "currentDPS", value: 10 },
+    id: 3,
+    name: "Polyglot",
+    description: "Correctly answer all Duolingo questions (cannot miss any)",
+    requirement: { type: "duolingoPercent", value: 100 },
     unlocked: false,
     claimed: false,
-    reward: 100
+    reward: 5000
   },
   {
-    id: 22,
-    name: "Dopamine Factory",
-    description: "Reach 100 dopamine per second",
-    requirement: { type: "currentDPS", value: 100 },
+    id: 4,
+    name: "Shopaholic",
+    description: "Purchase every cosmetic in the item shop",
+    requirement: { type: "allCosmetics", value: "all" },
+    unlocked: false,
+    claimed: false,
+    reward: 3000
+  },
+  {
+    id: 5,
+    name: "Maxed Out",
+    description: "Reach level 50",
+    requirement: { type: "level", value: 50 },
+    unlocked: false,
+    claimed: false,
+    reward: 2000
+  },
+  {
+    id: 6,
+    name: "iPad Kid",
+    description: "Generate 1,000,000 stimulation (total)",
+    requirement: { type: "totalDopamine", value: 1000000 },
+    unlocked: false,
+    claimed: false,
+    reward: 1500
+  },
+  {
+    id: 7,
+    name: "M'Lady",
+    description: "Tip your fedora (buy the fedora item)",
+    requirement: { type: "specificItem", value: "fedora" },
     unlocked: false,
     claimed: false,
     reward: 500
   },
-
-  // Upgrade-based achievements
   {
-    id: 30,
-    name: "First Enhancement",
-    description: "Purchase your first upgrade",
-    requirement: { type: "upgradesPurchased", value: 1 },
+    id: 8,
+    name: "Decked Out",
+    description: "Purchase all upgrades (except Duolingo / Touch Grass)",
+    requirement: { type: "upgradesExcept", excludeIds: [30, 99] },
     unlocked: false,
     claimed: false,
-    reward: 20
+    reward: 5000
   },
   {
-    id: 31,
-    name: "Upgrade Enthusiast", 
-    description: "Purchase 5 different upgrades",
-    requirement: { type: "uniqueUpgrades", value: 5 },
-    unlocked: false,
-    claimed: false,
-    reward: 75
-  },
-  {
-    id: 32,
-    name: "Completionist",
-    description: "Unlock all visual upgrades", 
-    requirement: { type: "visualUpgrades", value: "all" },
+    id: 9,
+    name: "Hunter",
+    description: "Unlock 15 achievements",
+    requirement: { type: "achievementsUnlocked", value: 15 },
     unlocked: false,
     claimed: false,
     reward: 1000
   },
-
-  // Time-based achievements
   {
-    id: 40,
-    name: "Dedicated User",
-    description: "Play for 5 minutes straight",
-    requirement: { type: "playTime", value: 300 }, // seconds
+    id: 10,
+    name: "Click Commander",
+    description: "Click the button 1,000 times",
+    requirement: { type: "totalClicks", value: 1000 },
     unlocked: false,
     claimed: false,
-    reward: 50
+    reward: 300
   },
   {
-    id: 41,
-    name: "Addiction Confirmed", 
-    description: "Play for 30 minutes straight",
-    requirement: { type: "playTime", value: 1800 },
+    id: 11,
+    name: "Tube Rider",
+    description: "Unlock fullscreen Subway Surfers (buy the fullscreen upgrade)",
+    requirement: { type: "specificUpgrade", value: 42 },
     unlocked: false,
     claimed: false,
-    reward: 250
+    reward: 1000
   },
-
-  // Special/Hidden achievements
   {
-    id: 50,
-    name: "Speed Demon",
-    description: "Click 10 times in 1 second", 
-    requirement: { type: "clicksPerSecond", value: 10 },
+    id: 12,
+    name: "Corner Hunter",
+    description: "Reach 100 DVD corner hits (DVD logos hitting window corners)",
+    requirement: { type: "cornerHits", value: 100 },
     unlocked: false,
     claimed: false,
-    reward: 100
+    reward: 800
   },
   {
-    id: 51,
-    name: "Patient Zero",
-    description: "Don't click for 30 seconds after starting",
-    requirement: { type: "patience", value: 30 },
+    id: 13,
+    name: "Loot Hoarder",
+    description: "Open 25 lootboxes",
+    requirement: { type: "lootboxesOpened", value: 25 },
+    unlocked: false,
+    claimed: false,
+    reward: 750
+  },
+  {
+    id: 14,
+    name: "Roaring Kitty",
+    description: "Make 100,000 stimulation from stocks (via stock market profit)",
+    requirement: { type: "stockProfit", value: 100000 },
+    unlocked: false,
+    claimed: false,
+    reward: 2000
+  },
+  {
+    id: 15,
+    name: "Click Corporal",
+    description: "Click the button 500 times",
+    requirement: { type: "totalClicks", value: 500 },
     unlocked: false,
     claimed: false,
     reward: 150
   },
   {
-    id: 52,
-    name: "The End?",
-    description: "Purchase the 'Touch Grass' upgrade",
-    requirement: { type: "specificUpgrade", value: 99 },
+    id: 16,
+    name: "Leveler",
+    description: "Reach level 25",
+    requirement: { type: "level", value: 25 },
     unlocked: false,
     claimed: false,
-    reward: 0 // No reward, it's the end!
+    reward: 800
+  },
+  {
+    id: 17,
+    name: "Casual Shopper",
+    description: "Purchase a cosmetic (any)",
+    requirement: { type: "cosmeticsPurchased", value: 1 },
+    unlocked: false,
+    claimed: false,
+    reward: 100
+  },
+  {
+    id: 18,
+    name: "Cursor Collector",
+    description: "Buy a custom cursor in the shop",
+    requirement: { type: "specificItem", value: "cursor" },
+    unlocked: false,
+    claimed: false,
+    reward: 200
+  },
+  {
+    id: 19,
+    name: "Owl Scholar",
+    description: "Correctly answer 10 Duolingo questions",
+    requirement: { type: "duolingoCorrect", value: 10 },
+    unlocked: false,
+    claimed: false,
+    reward: 300
+  },
+  {
+    id: 20,
+    name: "Day Trader",
+    description: "Sell a stock for profit (i.e. sell higher than buy)",
+    requirement: { type: "stockProfitTrade", value: 1 },
+    unlocked: false,
+    claimed: false,
+    reward: 500
+  },
+  {
+    id: 21,
+    name: "Gambler",
+    description: "Sell a stock for a loss (sell lower than buy)",
+    requirement: { type: "stockLossTrade", value: 1 },
+    unlocked: false,
+    claimed: false,
+    reward: 250
+  },
+  {
+    id: 22,
+    name: "Loot Finder",
+    description: "Open a lootbox",
+    requirement: { type: "lootboxesOpened", value: 1 },
+    unlocked: false,
+    claimed: false,
+    reward: 100
+  },
+  {
+    id: 23,
+    name: "Hoot Hoot",
+    description: "Activate Duolingo answers — buy the Duolingo upgrade",
+    requirement: { type: "specificUpgrade", value: 30 },
+    unlocked: false,
+    claimed: false,
+    reward: 400
+  },
+  {
+    id: 24,
+    name: "Achievements",
+    description: "Unlock the achievements feature (buy Achievements upgrade)",
+    requirement: { type: "specificUpgrade", value: 14 },
+    unlocked: false,
+    claimed: false,
+    reward: 200
+  },
+  {
+    id: 25,
+    name: "Click Cadet",
+    description: "Click the button 100 times",
+    requirement: { type: "totalClicks", value: 100 },
+    unlocked: false,
+    claimed: false,
+    reward: 50
+  },
+  {
+    id: 26,
+    name: "Procrastinator",
+    description: "Generate 100,000 stimulation in total",
+    requirement: { type: "totalDopamine", value: 100000 },
+    unlocked: false,
+    claimed: false,
+    reward: 500
+  },
+  {
+    id: 27,
+    name: "Commuter",
+    description: "Watch 10 minutes of Subway Surfers (have the Subway visuals active for 10 minutes)",
+    requirement: { type: "subwaySurfersTime", value: 600 },
+    unlocked: false,
+    claimed: false,
+    reward: 300
+  },
+  {
+    id: 28,
+    name: "Fixer Upper",
+    description: "Purchase 15 upgrades",
+    requirement: { type: "upgradesPurchased", value: 15 },
+    unlocked: false,
+    claimed: false,
+    reward: 400
+  },
+  {
+    id: 29,
+    name: "Good Grandchild",
+    description: "Reply to grandma's email (after unlocking Email/Inbox)",
+    requirement: { type: "emailReply", value: "grandma" },
+    unlocked: false,
+    claimed: false,
+    reward: 300
+  },
+  {
+    id: 30,
+    name: "Kinder Surprise",
+    description: "Open a kinder egg (an egg dropped by Paul the chicken, once Tamagotchi is unlocked)",
+    requirement: { type: "kinderEgg", value: 1 },
+    unlocked: false,
+    claimed: false,
+    reward: 400
+  },
+  {
+    id: 31,
+    name: "Chicken Tendies",
+    description: "Feed Paul the chicken (click feed when he is hungry)",
+    requirement: { type: "feedChicken", value: 1 },
+    unlocked: false,
+    claimed: false,
+    reward: 250
+  },
+  {
+    id: 32,
+    name: "Level Up",
+    description: "Reach level 10",
+    requirement: { type: "level", value: 10 },
+    unlocked: false,
+    claimed: false,
+    reward: 200
+  },
+  {
+    id: 33,
+    name: "Disc Collector",
+    description: "Buy 5 DVD logos (i.e. purchase the Bouncing DVD upgrade 5 times)",
+    requirement: { type: "specificUpgradeCount", upgradeId: 1, value: 5 },
+    unlocked: false,
+    claimed: false,
+    reward: 150
+  },
+  {
+    id: 34,
+    name: "Healthy Habits",
+    description: "Unlock Screen Time (buy the Screen Time upgrade)",
+    requirement: { type: "specificUpgrade", value: 20 },
+    unlocked: false,
+    claimed: false,
+    reward: 300
+  },
+  {
+    id: 35,
+    name: "Night Owl",
+    description: "Play at night (i.e. play between 7:00 PM and 6:30 AM)",
+    requirement: { type: "timeOfDay", startHour: 19, endHour: 6.5 },
+    unlocked: false,
+    claimed: false,
+    reward: 200
   }
 ];
 
