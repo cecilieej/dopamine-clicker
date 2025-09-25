@@ -1,3 +1,5 @@
+// TabTitleManager.jsx - Manages change of browser tab title and favicon
+// Affected by upgrade: 2 (Add Tab Title)
 import { useEffect } from 'react';
 
 export default function TabTitleManager() {
