@@ -1,5 +1,5 @@
 // DVDBouncer.jsx - Handles bouncing DVD logos around the screen
-// Affected by upgrades: 1 (Bouncing DVD), 21 (DVD Speed II), 24 (Corner Hits), 38 (Technicolor)
+// Affected by upgrades: 1 (Bouncing DVD), 21 (DVD Speed I), 24 (Corner Hits), 38 (DVD Speed II)
 import React, { useState, useEffect, useRef } from 'react';
 
 export default function DVDBouncer({ count, hasSpeed2, hasCornerHits, hasTechnicolor }) {

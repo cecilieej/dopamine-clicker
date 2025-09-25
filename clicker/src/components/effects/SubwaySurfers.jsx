@@ -1,5 +1,5 @@
 // SubwaySurfers.jsx - Embeds Subway Surfers video gameplay
-// Affected by upgrades: 7 (Subway Surfers), 31 (Subway Surfers Unmuted), 40 (Subway Surfers Fullscreen), 45 (Subway Surfers Wormhole)
+// Affected by upgrades: 7 (Subway Surfers), 31 (Subway Surfers Unmuted)
 import React from 'react';
 
 export default function SubwaySurfers({ isUnmuted, isFullscreen, hasWormhole }) {

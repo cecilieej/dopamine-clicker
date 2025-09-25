@@ -1,5 +1,5 @@
-// SoapCutting.jsx - ASMR slime visuals and soap cutting videos
-// Affected by upgrades: 17 (Slime)
+// SoapCutting.jsx - ASMR soap cutting videos and satisfying visuals
+// Affected by upgrades: 17 (Soap Cutting)
 import React from 'react';
 
 export default function SoapCutting() {
@@ -26,7 +26,7 @@ export default function SoapCutting() {
             fontSize: '14px',
             textAlign: 'center',
           }}>
-            🌈 ASMR Slime<br/>
+            🌈 ASMR Soap Cutting<br/>
             *squish sounds*
           </div>
         </div>

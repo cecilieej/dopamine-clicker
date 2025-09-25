@@ -1,5 +1,5 @@
 // Overstimulation.jsx - The ultimate chaos effect with all stimuli combined
-// Affected by upgrades: 38 (Overstimulation)
+// Affected by upgrades: 39 (Dopamine overload.. or overstimulation?)
 import React, { useState, useEffect } from 'react';
 
 export default function Overstimulation() {

@@ -1,5 +1,5 @@
-// CatContent.jsx - Displays cat videos or images for relaxation
-// Affected by upgrades: 13 (Hydraulic Press) - Note: This was supposed to be cat content but upgrade 13 is Hydraulic Press
+// CatContent.jsx - Displays cat videos or images
+// Affected by upgrades: 13 (Cat Content)
 import React from 'react';
 
 export default function CatContent() {
