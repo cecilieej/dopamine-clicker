@@ -4,49 +4,45 @@ export const upgradesData = [
   // Generator Upgrade (only this one is repeatable)
   { 
     id: 1, 
-    name: "Bouncing DVD", 
+    name: "Bouncing DVD", // Each owned DVD logo bounces around the screen, giving dopamine on each bounce
     type: "generator", 
     cost: 5, 
     dps: 0.1, 
     unlockAt: 2, 
     flavorText: "+1 dopamine per bounce", 
     maxOwned: null, 
-    chaosBoost: 1 
   },
 
   // Visual/Permanent Upgrades (maxOwned: 1)
   { 
     id: 2, 
-    name: "Add Tab Title", // A title and an icon is added to tab
+    name: "Add Tab Title", // A title and an icon is added to tab - is initially just "Untitled"
     type: "visual", 
     cost: 5, 
     dps: 0, 
     unlockAt: 5, 
     flavorText: "It's good for SEO", 
     maxOwned: 1, 
-    chaosBoost: 1 
   },
   { 
     id: 3, 
-    name: "Amount Animation", // Plays an animation when clicking
+    name: "Amount Animation", // Now plays an animation when clicking
     type: "visual", 
     cost: 10, 
     dps: 0, 
     unlockAt: 8, 
     flavorText: "+1 dopamine per click", 
     maxOwned: 1, 
-    chaosBoost: 2 
   },
   { 
     id: 4, 
-    name: "SPS Counter", // Shows a 'stimulation per second' counter (informational UI)
+    name: "DPS Counter", // Shows a 'dopamine per second' counter (informational UI)
     type: "visual", 
     cost: 25, 
     dps: 0, 
     unlockAt: 15, 
     flavorText: "See your dopamine per second", 
     maxOwned: 1, 
-    chaosBoost: 1 
   },
   { 
     id: 5, 
@@ -57,7 +53,6 @@ export const upgradesData = [
     unlockAt: 25, 
     flavorText: "+1 dopamine per click", 
     maxOwned: 1, 
-    chaosBoost: 2 
   },
   { 
     id: 6, 
@@ -68,18 +63,16 @@ export const upgradesData = [
     unlockAt: 40, 
     flavorText: "+5 dopamine per bounce", 
     maxOwned: 1, 
-    chaosBoost: 3 
   },
   { 
     id: 7, 
-    name: "Subway Surfers", // Embeds Subway Surfers visuals  
+    name: "Subway Surfers", // Embeds Subway Surfers visuals , e.g. https://www.youtube.com/watch?v=i0M4ARe9v0Y
     type: "visual", 
     cost: 100, 
     dps: 3, 
     unlockAt: 60, 
     flavorText: "+3 dopamine per second", 
     maxOwned: 1, 
-    chaosBoost: 5 
   },
   { 
     id: 8, 
@@ -90,29 +83,26 @@ export const upgradesData = [
     unlockAt: 70, 
     flavorText: "Stay up to date with the latest news. +4 dopamine per second", 
     maxOwned: 1, 
-    chaosBoost: 4 
   },
   { 
     id: 9, 
-    name: "Critical Hits", // chance for 'critical' clicks (5% chance)
+    name: "Critical Hits", // 5% chance for 'critical' clicks
     type: "visual", 
     cost: 200, 
     dps: 0, 
     unlockAt: 120, 
     flavorText: "Adds a 5% chance of a critical hit", 
     maxOwned: 1, 
-    chaosBoost: 3 
   },
   { 
     id: 10, 
-    name: "Lofi Beats", // Adds lofi music + visuals (Lofi Girl)
+    name: "Lofi Beats", // Adds lofi music + visuals (Lofi Girl), e.g. https://www.youtube.com/watch?v=AzV77KFsLn4
     type: "visual", 
     cost: 250, 
     dps: 10, 
     unlockAt: 150, 
     flavorText: "Helps you study and relax. +10 dopamine per second", 
     maxOwned: 1, 
-    chaosBoost: 6 
   },
   { 
     id: 11, 
@@ -123,7 +113,6 @@ export const upgradesData = [
     unlockAt: 200, 
     flavorText: "Soothing rain sounds. +15 dopamine per second", 
     maxOwned: 1, 
-    chaosBoost: 5 
   },
   { 
     id: 12, 
@@ -134,20 +123,19 @@ export const upgradesData = [
     unlockAt: 400, 
     flavorText: "+20 dopamine per second", 
     maxOwned: 1, 
-    chaosBoost: 7 
   },
   { 
     id: 13, 
-    name: "Hydraulic Press", // Adds a hydraulic press mechanics
+    name: "Cat Videos", // Adds cat video visuals/audio, e.g. https://www.youtube.com/watch?v=C4oIkyW4H3k or https://tenor.com/view/cats-infinity-gif-18216694
     type: "visual", 
     cost: 1000, 
-    dps: 0, 
+    dps: 25, 
     unlockAt: 600, 
-    flavorText: "Squish things slowly", 
+    flavorText: "Watch cute cat videos. +25 dopamine per second", 
     maxOwned: 1, 
-    chaosBoost: 8 
   },
   { 
+    // RECONSIDER WHETHER THIS IS WORTH IT TO STAY WITHIN SCOPE
     id: 14, 
     name: "Achievements", // Unlocks the achievements UI and tracking system
     type: "visual", 
@@ -156,18 +144,16 @@ export const upgradesData = [
     unlockAt: 800, 
     flavorText: "Celebrate your accomplishments", 
     maxOwned: 1, 
-    chaosBoost: 4 
   },
   { 
     id: 15, 
-    name: "Thunder Sounds", // Adds ambient thunder sound
+    name: "Thunder Sounds", // Adds ambient thunder sound, e.g. 
     type: "visual", 
     cost: 2000, 
     dps: 8, 
     unlockAt: 1000, 
     flavorText: "Adds ambient rolling thunder sound. +8 dopamine per second", 
     maxOwned: 1, 
-    chaosBoost: 6 
   },
   { 
     id: 16, 
@@ -178,43 +164,29 @@ export const upgradesData = [
     unlockAt: 1500, 
     flavorText: "+8 dopamine per click", 
     maxOwned: 1, 
-    chaosBoost: 5 
   },
   { 
     id: 17, 
-    name: "Slime", 
+    name: "Soap Cutting", // Adds ASMR soap cutting visuals/videos, e.g. https://www.youtube.com/watch?v=CBuN-4q3FIo
     type: "visual", 
     cost: 4000, 
     dps: 35, 
     unlockAt: 1800, 
-    flavorText: "Adds ASMR slime visuals/videos; gives +35 sps", 
+    flavorText: "Watch ASMR soap videos. +35 dopamine per second", 
     maxOwned: 1, 
-    chaosBoost: 9 
   },
   { 
     id: 18, 
-    name: "Technicolor", 
+    name: "Minecraft", // Adds Minecraft visuals/audio from YouTube
     type: "visual", 
-    cost: 5000, 
-    dps: 0, 
-    unlockAt: 2200, 
-    flavorText: "DVDs change color when bouncing; gives +10 spb", 
+    cost: 6000, 
+    dps: 50, 
+    unlockAt: 2500, 
+    flavorText: "Watch a let's play. +50 dopamine per second", 
     maxOwned: 1, 
-    chaosBoost: 3 
   },
   { 
     id: 19, 
-    name: "Mukbang", 
-    type: "visual", 
-    cost: 6000, 
-    dps: 60, 
-    unlockAt: 2500, 
-    flavorText: "Adds a mukbang video; gives +60 sps", 
-    maxOwned: 1, 
-    chaosBoost: 12 
-  },
-  { 
-    id: 20, 
     name: "Screen Time", // Unlocks the 'Screen Time' menu (for tracking stats)
     type: "visual", 
     cost: 7500, 
@@ -222,18 +194,27 @@ export const upgradesData = [
     unlockAt: 3000, 
     flavorText: "Manage your screen habits", 
     maxOwned: 1, 
-    chaosBoost: 2 
   },
   { 
-    id: 21, 
+    // RECONSIDER WHETHER THIS IS WORTH IT TO STAY WITHIN SCOPE
+    id: 20, 
     name: "Levels", // Enables leveling / experience mechanics, which yield bonus stimulation when leveling up
     type: "visual", 
     cost: 8000, 
     dps: 0, 
     unlockAt: 3500, 
-    flavorText: "Gain experience and level up", 
+    flavorText: "Gain experience and level up",
     maxOwned: 1, 
-    chaosBoost: 6 
+  },
+  {
+    id: 21,
+    name: "DVD Speed I", // Increase DVD speed by 1x
+    type: "visual",
+    cost: 7000,
+    dps: 0,
+    unlockAt: 2750,
+    flavorText: "Double the speed of your DVDs",
+    maxOwned: 1,
   },
   { 
     id: 22, 
@@ -242,97 +223,89 @@ export const upgradesData = [
     cost: 10000, 
     dps: 100, 
     unlockAt: 4000, 
-    flavorText: "Listen to a murder. +100 dopamine per second.", 
+    flavorText: "Listen to a murder. Just like Mørkeland. +100 dopamine per second.", 
     maxOwned: 1, 
-    chaosBoost: 15 
   },
   { 
     id: 23, 
-    name: "Auto Hydraulics", 
+    name: "Keyboard ASMR", 
     type: "visual", 
     cost: 15000, 
     dps: 0, 
     unlockAt: 6000, 
-    flavorText: "Automates the hydraulic press (no manual clicking needed)", 
+    flavorText: "Listen to keyboard sounds while you click. Satisfying. ", 
     maxOwned: 1, 
-    chaosBoost: 8 
   },
   { 
     id: 24, 
-    name: "Corner Hits", 
+    name: "Corner Hits", // Makes DVD logos hitting corners give extra stimulation (×10)
     type: "visual", 
     cost: 15000, 
     dps: 0, 
     unlockAt: 6500, 
-    flavorText: "Makes DVD logos hitting corners give extra stimulation (×10)", 
+    flavorText: "DVD corner hits give 10x dopamine", 
     maxOwned: 1, 
-    chaosBoost: 10 
   },
   { 
     id: 25, 
-    name: "UI Upgrade", 
+    name: "UI Upgrade", // Adds more UI customization (colored news banner, buttons get a shadow, increased colors)
     type: "visual", 
     cost: 15000, 
     dps: 0, 
     unlockAt: 7000, 
-    flavorText: "Adds more UI customization (colors, gradients) (mostly cosmetic)", 
+    flavorText: "Bright colors. More gradients.", 
     maxOwned: 1, 
-    chaosBoost: 3 
   },
   { 
+    // RECONSIDER WHETHER THIS IS WORTH IT TO STAY WITHIN SCOPE
     id: 26, 
-    name: "Item Shop", 
+    name: "Item Shop", // Unlocks the item shop (buttons, cursors, trails, etc.)
     type: "visual", 
     cost: 17500, 
     dps: 0, 
     unlockAt: 8000, 
-    flavorText: "Unlocks the cosmetic shop (cursors, trails, etc.)", 
+    flavorText: "", 
     maxOwned: 1, 
-    chaosBoost: 4 
   },
   { 
     id: 27, 
-    name: "Loot Boxes", 
+    name: "Loot Boxes", // Adds loot boxes that spawn; opening them gives math.random() dopamine between 400-1500
     type: "visual", 
     cost: 20000, 
     dps: 0, 
     unlockAt: 10000, 
-    flavorText: "Adds loot boxes that spawn; opening them gives stimulation or rewards", 
+    flavorText: "Surprise mechanics for extra dopamine", 
     maxOwned: 1, 
-    chaosBoost: 12 
   },
   { 
     id: 28, 
-    name: "Button Upgrade II", 
+    name: "Button Upgrade II", // Further upgrade: each click gives 1% of current DPS
     type: "visual", 
     cost: 25000, 
     dps: 0, 
     unlockAt: 12000, 
-    flavorText: "Further upgrade: each click gives you 1% of your SPS as bonus stimulation", 
+    flavorText: "Each click gives you 1% of your DPS", 
     maxOwned: 1, 
-    chaosBoost: 5 
   },
   { 
     id: 29, 
     name: "Meditation", // Adds meditation visuals/audio
     type: "visual", 
     cost: 35000, 
-    dps: 120, 
+    dps: 100, 
     unlockAt: 18000, 
-    flavorText: "Help relax your mind", 
+    flavorText: "Help relax your mind. +100 dopamine per second", 
     maxOwned: 1, 
-    chaosBoost: 10 
   },
   { 
     id: 30, 
     name: "Meditation ×2", // Doubles meditation yield / speeds it up
     type: "visual", 
     cost: 60000, 
-    dps: 120, 
+    dps: 100, 
     unlockAt: 30000, 
-    flavorText: "Meditate twice as fast", 
+    flavorText: "Meditate twice as fast. +100 dopamine per second", 
     maxOwned: 1, 
-    chaosBoost: 8 
   },
   { 
     id: 31, 
@@ -341,11 +314,11 @@ export const upgradesData = [
     cost: 50000, 
     dps: 150, 
     unlockAt: 25000, 
-    flavorText: "Unmute Subway Surfers", 
+    flavorText: "150 dopamine per second", 
     maxOwned: 1, 
-    chaosBoost: 12 
   },
   { 
+    // RECONSIDER WHETHER THIS IS WORTH IT TO STAY WITHIN SCOPE
     id: 32, 
     name: "Email", // Unlocks an 'Inbox' / email system OR a phone-like notification system
     type: "visual", 
@@ -354,29 +327,26 @@ export const upgradesData = [
     unlockAt: 35000, 
     flavorText: "Take a break and check your inbox", 
     maxOwned: 1, 
-    chaosBoost: 4 
   },
   { 
     id: 33, 
-    name: "Fitness Instructor", // Adds fitness/trainer visuals/audio
+    name: "Fitness Instructor", // Adds fitness/trainer visuals/audio from YouTube video
     type: "visual", 
     cost: 75000, 
     dps: 100, 
     unlockAt: 40000, 
-    flavorText: "Get fit and stay motivated", 
+    flavorText: "Get fit with your screen to stay motivated. +100 dopamine per second", 
     maxOwned: 1, 
-    chaosBoost: 8 
   },
   { 
     id: 34, 
-    name: "In-Game Currency (Gems)", 
+    name: "Vines", // Adds Vine visuals/audio from YouTube video
     type: "visual", 
     cost: 100000, 
     dps: 0, 
     unlockAt: 50000, 
-    flavorText: "Unlocks a 'Gems' currency for special cosmetics (not directly stimulative)", 
+    flavorText: "Reminisce the good old days when Vine was a thing", 
     maxOwned: 1, 
-    chaosBoost: 5 
   },
   { 
     id: 35, 
@@ -385,9 +355,8 @@ export const upgradesData = [
     cost: 100000, 
     dps: 200, 
     unlockAt: 55000, 
-    flavorText: "Add a friend in the chaos", 
+    flavorText: "A friend in the chaos. +200 dopamine per second", 
     maxOwned: 1, 
-    chaosBoost: 15 
   },
   { 
     id: 36, 
@@ -398,7 +367,6 @@ export const upgradesData = [
     unlockAt: 150000, 
     flavorText: "Adopt a virtual pet. Don't forget to feed him!", 
     maxOwned: 1, 
-    chaosBoost: 6 
   },
   { 
     id: 37, 
@@ -409,7 +377,6 @@ export const upgradesData = [
     unlockAt: 250000, 
     flavorText: "Start streaming on Twitch. Have the chat keep you company", 
     maxOwned: 1, 
-    chaosBoost: 12 
   },
   { 
     id: 38, 
@@ -420,18 +387,16 @@ export const upgradesData = [
     unlockAt: 400000, 
     flavorText: "Double DVD speed", 
     maxOwned: 1, 
-    chaosBoost: 15 
   },
   { 
     id: 39, 
-    name: "Mindfulness App", // Adds mindfulness visuals/audio
+    name: "Dopamine overload.. or overstimulation?", // Screen Inversion or Fractal Expansion?? Everything gets wobbly
     type: "visual", 
     cost: 900000, 
     dps: 1000, 
     unlockAt: 500000, 
-    flavorText: "Become more mindful about your screen time", 
+    flavorText: "A new perspective on reality. +1000 dopamine per second", 
     maxOwned: 1, 
-    chaosBoost: 25 
   },
   
   // The FINAL(!) upgrade
