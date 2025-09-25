@@ -126,7 +126,7 @@ export const upgradesData = [
   },
   { 
     id: 13, 
-    name: "Cat Videos", // Adds cat video visuals/audio, e.g. https://www.youtube.com/watch?v=C4oIkyW4H3k or https://tenor.com/view/cats-infinity-gif-18216694
+    name: "Cat Content", // Adds cat video visuals/audio, e.g. https://www.youtube.com/watch?v=C4oIkyW4H3k or https://tenor.com/view/cats-infinity-gif-18216694
     type: "visual", 
     cost: 1000, 
     dps: 25, 
@@ -259,7 +259,7 @@ export const upgradesData = [
   { 
     // RECONSIDER WHETHER THIS IS WORTH IT TO STAY WITHIN SCOPE
     id: 26, 
-    name: "Item Shop", // Unlocks the item shop (buttons, cursors, trails, etc.)
+    name: "Item Shop", // Unlocks the item shop (purchase 'skins' to change appearance of the clicker button, cursors and cursor trails)
     type: "visual", 
     cost: 17500, 
     dps: 0, 
@@ -360,17 +360,17 @@ export const upgradesData = [
   },
   { 
     id: 36, 
-    name: "Tamagotchi", // Adds a virtual pet (you can interact/feed it!! hopefully!)
+    name: "Virtual Pet", // Adds a virtual pet (you can interact/feed it!! hopefully!)
     type: "visual", 
     cost: 300000, 
     dps: 0, 
     unlockAt: 150000, 
-    flavorText: "Adopt a virtual pet. Don't forget to feed him!", 
+    flavorText: "Adopt a cute virtual pet! Don't forget to feed him", 
     maxOwned: 1, 
   },
   { 
     id: 37, 
-    name: "Twitch Chat", // Adds a Twitch chat overlay / feature
+    name: "Twitch Chat", // Adds a Twitch chat overlay with random messages
     type: "visual", 
     cost: 500000, 
     dps: 0, 
