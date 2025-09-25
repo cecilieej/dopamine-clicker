@@ -1,4 +1,4 @@
-// Achievement system -- TODO: Refine all achievements and their requirements
+// TODO: Achievement system -- Need to remember to refine all achievements and their requirements
 // Structure: {id, name, description, requirement, unlocked, claimed, reward}
 
 export const achievementsData = [
