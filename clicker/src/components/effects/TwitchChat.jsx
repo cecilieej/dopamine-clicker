@@ -7,9 +7,9 @@ export default function TwitchChat() {
   const [messageId, setMessageId] = useState(0);
 
   const chatMessages = [
-    { user: 'PogChamp123', message: 'THIS IS INSANE', color: '#9146ff' },
+    { user: 'PogChamp123', message: 'just joined whats up guys', color: '#9146ff' },
     { user: 'ClickMaster99', message: 'HOW DO YOU CLICK SO FAST', color: '#00f5ff' },
-    { user: 'DopamineLord', message: 'MY BRAIN IS MELTING', color: '#ff6b6b' },
+    { user: 'DopamineLord', message: 'MY BRAIN IS MELTING DUDE', color: '#ff6b6b' },
     { user: 'StimAddict2024', message: 'CANT STOP WATCHING', color: '#51ff00' },
     { user: 'ReactGod', message: 'POGGERS', color: '#ff9f43' },
     { user: 'ClickBot5000', message: 'beep boop click click', color: '#a29bfe' },
@@ -17,7 +17,7 @@ export default function TwitchChat() {
     { user: 'SubAlert', message: 'Thanks for the follow!', color: '#fdcb6e' },
     { user: 'ModeratorTim', message: 'Keep it clean chat', color: '#00b894' },
     { user: 'DonationBot', message: '$5 from Anonymous: "Keep clicking!"', color: '#e17055' },
-    { user: 'SpamKing', message: 'Kappa Kappa Kappa', color: '#636e72' },
+    { user: 'SpamKing', message: 'Follow for follow pls', color: '#636e72' },
     { user: 'NewViewer42', message: 'What upgrades should I get?', color: '#fab1a0' },
   ];
 

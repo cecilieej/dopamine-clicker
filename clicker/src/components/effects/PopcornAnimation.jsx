@@ -1,4 +1,4 @@
-// PopcornAnimation.jsx - Adds popcorn animation effects on clicks
+// PopcornAnimation.jsx - Adds a bouncy animation effects on clicks
 // Affected by upgrades: 16 (Popcorn Animation)
 import React, { useState, useEffect } from 'react';
 

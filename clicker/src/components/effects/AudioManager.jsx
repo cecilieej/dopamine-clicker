@@ -1,5 +1,20 @@
 // AudioManager.jsx - Centralized audio management for all effects
 // Manages background music, sound effects, and audio mixing
+
+// AudioManager.jsx (handles:
+ // – DVD Bounce Sound (id 6)
+ // – Lofi Beats (id 10)
+ // – Rain Sounds (id 11)
+ // – Thunder (id 15)
+ // – True Crime Podcast (id 22)
+ // – Keyboard ASMR (id 23)
+ // – Subway Surfers Unmuted (id 31)
+ // – Meditation (id 29/30)
+ // – Fitness Instructor (id 33)
+ // – Vines (id 34)
+ // – Reaction Streamer (id 35)
+ // – Twitch Chat (id 37)
+
 import React, { useEffect, useRef } from 'react';
 
 export default function AudioManager({ ownedUpgrades = [] }) {

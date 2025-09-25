@@ -1,4 +1,4 @@
-// BreakingNews.jsx - Adds a scrolling news ticker banner at the bottom
+// BreakingNews.jsx - Adds a scrolling news ticker banner at the top of the screen
 // Affected by upgrades: 8 (Breaking News)
 import React, { useState, useEffect } from 'react';
 
