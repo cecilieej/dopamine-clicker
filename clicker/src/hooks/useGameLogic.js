@@ -5,7 +5,6 @@ import { upgradesData } from "../data/upgrades.js"; // Import from data folder w
 export default function useGameLogic() {
   const [dopamine, setDopamine] = useState(0);
   const [upgrades, setUpgrades] = useState(upgradesData); // Use the imported upgradesData
-  const [chaosLevel, setChaosLevel] = useState(0);
   const [endGame, setEndGame] = useState(false);
 
   // Manual click
@@ -13,54 +12,53 @@ export default function useGameLogic() {
 
   // Purchase upgrade
   const purchaseUpgrade = (id) => {
+    const upgrade = upgrades.find((u) => u.id === id);
+    if (!upgrade || dopamine < upgrade.cost) return;
+
+    // Check if upgrade is at max owned limit
+    if (upgrade.maxOwned !== null && (upgrade.owned || 0) >= upgrade.maxOwned) {
+      return;
+    }
+
     setUpgrades((prev) =>
       prev.map((u) =>
-        u.id === id && dopamine >= u.cost
-          ? { ...u, owned: (u.owned || 0) + 1 }
-          : u
+        u.id === id ? { ...u, owned: (u.owned || 0) + 1 } : u
       )
     );
-    setDopamine((d) => {
-      const upgrade = upgrades.find((u) => u.id === id);
-      return upgrade && d >= upgrade.cost ? d - upgrade.cost : d;
-    });
+    
+    setDopamine((d) => d - upgrade.cost);
   };
+
+  // Calculate total DPS
+  const totalDps = upgrades.reduce(
+    (sum, u) => sum + (u.dps * (u.owned || 0)),
+    0
+  );
 
   // Auto dopamine from upgrades
   useEffect(() => {
+    if (totalDps <= 0) return;
+
     const interval = setInterval(() => {
-      let totalDps = upgrades.reduce(
-        (sum, u) => sum + (u.dps * (u.owned || 0)),
-        0
-      );
-      if (totalDps > 0) {
-        setDopamine((d) => d + totalDps);
-      }
+      setDopamine((d) => d + totalDps);
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [upgrades]);
+  }, [totalDps]);
 
-  // Chaos scaling
+  // End condition
   useEffect(() => {
-    const chaos = upgrades.reduce(
-      (sum, u) => sum + (u.chaosBoost * (u.owned || 0)),
-      0
-    );
-    setChaosLevel(chaos);
-
-    // End condition
     if (dopamine >= 1000000) {
       setEndGame(true);
     }
-  }, [dopamine, upgrades]);
+  }, [dopamine]);
 
   return {
     dopamine,
     addDopamine,
-    upgrades, // Return as 'upgrades' to match your App.jsx
+    upgrades,
     purchaseUpgrade,
-    chaosLevel,
+    totalDps,
     endGame,
   };
 }
