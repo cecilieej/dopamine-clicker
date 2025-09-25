@@ -62,22 +62,22 @@ button:focus-visible {
 .game-container {
   display: grid;
   grid-template-areas: 
-    "clicker"
-    "counter"
+    "button"
+    "counter"  
     "upgrades";
-  grid-template-rows: 1fr auto 300px;
+  grid-template-rows: 40vh 20vh 40vh; /* Fixed viewport heights */
   height: 100vh;
   width: 100vw;
-  padding: 2rem;
-  gap: 2rem;
-  background-color: #000000;
+  padding: 0;
+  margin: 0;
 }
 
 .clicker-section {
-  grid-area: clicker;
+  grid-area: button;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end; /* Stick to bottom of button area */
+  padding-bottom: 2rem;
 }
 
 .clicker-btn {
@@ -96,51 +96,146 @@ button:focus-visible {
   background-color: #f0f0f0;
 }
 
-.counter {
+.clicker-btn.upgraded-button {
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+  background-size: 400% 400%;
+  animation: gradientShift 3s ease infinite;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.2);
+  border: 3px solid #fff;
+  font-weight: bold;
+}
+
+.clicker-btn.advanced-button {
+  transform: scale(1.1);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4), 0 0 30px rgba(255, 215, 0, 0.6);
+  border: 3px solid #ffd700;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.counter-section {
   grid-area: counter;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Stick to top of counter area */
+  padding-top: 1rem;
+  min-height: 120px; /* Fixed height to prevent jumping */
+}
+
+.counter {
   font-size: 2.5em;
   font-weight: 300;
   color: #ffffff;
   margin: 0;
   text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 80px;
 }
 
 .upgrades-section {
   grid-area: upgrades;
   display: flex;
-  flex-direction: column;
-  background-color: transparent; /* Made transparent */
-  border: none; /* Removed border */
-  border-radius: 0; /* Removed border radius */
-  padding: 1.5rem;
-  overflow: hidden;
-  max-width: 500px;
-  margin: 0 auto;
-  width: 100%;
+  justify-content: center;
+  align-items: flex-start; /* Stick to top of upgrades area */
+  padding-top: 2rem;
 }
 
-.upgrades-header {
-  font-size: 1.2em;
-  color: #ffffff;
+/* Remove any position: fixed or absolute positioning that might conflict */
+.dps-counter {
+  color: white;
   text-align: center;
-  margin-bottom: 1rem;
-  border-bottom: 1px solid #333;
-  padding-bottom: 0.5rem;
+  font-size: 0.9em;
+  margin-top: 0.5rem;
+  /* Remove any position: fixed */
+}
+
+.dps-value {
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+.dps-label {
+  font-size: 0.8em;
+  color: #ccc;
+}
+
+/* Click Effects */
+.click-effects-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 50;
+}
+
+.click-effect {
+  position: fixed;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1.2em;
+  transform: translate(-50%, -50%);
+  animation: clickEffect 1.5s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes clickEffect {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -400%) scale(1.5);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+/* Scrollbar styling */
+.upgrade-grid::-webkit-scrollbar {
+  width: 6px;
+}
+
+.upgrade-grid::-webkit-scrollbar-track {
+  background: #111111;
+  border-radius: 3px;
+}
+
+.upgrade-grid::-webkit-scrollbar-thumb {
+  background: #444444;
+  border-radius: 3px;
+}
+
+.upgrade-grid::-webkit-scrollbar-thumb:hover {
+  background: #666666;
 }
 
 .upgrade-grid {
   display: flex;
   justify-content: center;
   gap: 1rem;
-  flex-wrap: wrap;
-  overflow-y: auto;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
   flex: 1;
   padding-right: 0.5rem;
-  align-content: flex-start;
+  align-items: flex-start;
 }
 
 .upgrade-item {
@@ -202,36 +297,4 @@ button:focus-visible {
   color: #ffffff;
   font-size: 0.8em;
   font-weight: bold;
-}
-
-/* Scrollbar styling */
-.upgrade-grid::-webkit-scrollbar {
-  width: 6px;
-}
-
-.upgrade-grid::-webkit-scrollbar-track {
-  background: #111111;
-  border-radius: 3px;
-}
-
-.upgrade-grid::-webkit-scrollbar-thumb {
-  background: #444444;
-  border-radius: 3px;
-}
-
-.upgrade-grid::-webkit-scrollbar-thumb:hover {
-  background: #666666;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
 }
